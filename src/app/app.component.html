@@ -1,32 +1,9 @@
 <app-global-error></app-global-error>
 
-<h1 class="font-bold mb-2 text-center">{{ title | titlecase }}</h1>
+<app-navigation></app-navigation>
 
-<div class="max-w-2xl container mx-auto pt-5">
+<div class="max-w-2xl container mx-auto pt-5 mt-[50px]">
 
-  <input
-  type="text"
-  class="mb-2 border py-2 px-4 w-full"
-  placeholder="filter products"
-  [(ngModel)]="term">
-
-  <p *ngIf="loading" class="text-center text-lg">Loading...</p>
-
- <div *ngIf="productsService.products">
-    <app-product
-      *ngFor="let pr of productsService.products | filterProducts:term; let i = index"
-      [product]="pr"
-    ></app-product>
- </div>
-
- <app-modal *ngIf="modalService.isVisible$ | async"
-  title="Create new product">
-    <app-create-product></app-create-product>
- </app-modal>
-
- <button class="rounded-full bg-red-600 text-white fixed right-5 bottom-5 p-2"
- (click)="modalService.open()">
-  Add new
- </button>
+  <router-outlet></router-outlet>
 
 </div>
